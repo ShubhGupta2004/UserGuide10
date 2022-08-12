@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class fragmentAdapter extends FragmentPagerAdapter {
     final int PAGE_COUNT = 4;
-    private static String tabTitles[] = new String[] { "Tab1", "Tab2", "Tab3" };
+    private static String tabTitles[] = new String[] { "Tab1", "Tab2", "Tab3","Tab 4" };
     private static int imageResId[] = new int[] {R.drawable.when,R.drawable.how,R.drawable.when};
     private static Context context;
 

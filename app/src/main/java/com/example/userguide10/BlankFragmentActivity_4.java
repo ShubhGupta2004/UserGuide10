@@ -22,10 +22,10 @@ public class BlankFragmentActivity_4 extends Fragment {
 
     private int mPage;
 
-    public static BlankFrangmentActivity_2 newInstance(int page) {
+    public static BlankFragmentActivity_4 newInstance(int page) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
-        BlankFrangmentActivity_2 fragment = new BlankFrangmentActivity_2();
+        BlankFragmentActivity_4 fragment = new BlankFragmentActivity_4();
         fragment.setArguments(args);
         return fragment;
     }
@@ -40,8 +40,8 @@ public class BlankFragmentActivity_4 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_blank_activity_4, container, false);
-        TextView textView = (TextView) view;
-        String text = "Fragment #" + mPage+"123";
+        TextView textView = (TextView) view.findViewById(R.id.text_fragment4);
+        String text = "Fragment #" + mPage+"1moto23";
         textView.setText(text);
         return view;
     }

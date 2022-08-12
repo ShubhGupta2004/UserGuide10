@@ -40,7 +40,7 @@ public class BlankFrangmentActivity_2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_blank_frangment_activity_2, container, false);
-        TextView textView = (TextView) view;
+        TextView textView = (TextView) view.findViewById(R.id.text_fragment2);
         String text = "Fragment #" + mPage+"123";
         textView.setText(text);
         return view;
