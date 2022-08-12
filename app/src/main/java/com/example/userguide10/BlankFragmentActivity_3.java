@@ -11,11 +11,12 @@ import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BlankFrangmentActivity_2#newInstance} factory method to
+ * Use the {@link BlankFragmentActivity_3#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BlankFrangmentActivity_2 extends Fragment {
+public class BlankFragmentActivity_3 extends Fragment {
 
+    // TODO: Rename parameter arguments, choose names that match
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     public static final String ARG_PAGE = "ARG_PAGE";
@@ -39,7 +40,7 @@ public class BlankFrangmentActivity_2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_blank_frangment_activity_2, container, false);
+        View view = inflater.inflate(R.layout.fragment_blank_activity_3, container, false);
         TextView textView = (TextView) view;
         String text = "Fragment #" + mPage+"123";
         textView.setText(text);

@@ -12,7 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 public class fragmentAdapter extends FragmentPagerAdapter {
-    final int PAGE_COUNT = 3;
+    final int PAGE_COUNT = 4;
     private static String tabTitles[] = new String[] { "Tab1", "Tab2", "Tab3" };
     private static int imageResId[] = new int[] {R.drawable.when,R.drawable.how,R.drawable.when};
     private static Context context;
@@ -29,10 +29,17 @@ public class fragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if(position==1){
+        if(position==0){
+            return BlankFragmentActivity_1.newInstance(position+1);
+        }else if(position==1){
             return BlankFrangmentActivity_2.newInstance(position+1);
+        }else if(position==2){
+            return BlankFragmentActivity_3.newInstance(position+1);
+        }else if(position==3){
+            return BlankFragmentActivity_4.newInstance(position+1);
+        }else {
+            return BlankFragment_1.newInstance(position + 1);
         }
-        return BlankFragment_1.newInstance(position + 1);
     }
 
     @Override
