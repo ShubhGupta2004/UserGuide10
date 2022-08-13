@@ -11,11 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
 import okhttp3.OkHttpClient;
@@ -35,7 +34,7 @@ public class BlankFragmentActivity_1 extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
     public static String url1 = "";
     public static String resp;
-    public static ListView list;
+    public static GridView list;
 
     private int mPage;
     public static Context thisContext;
@@ -69,7 +68,8 @@ public class BlankFragmentActivity_1 extends Fragment {
         String text = "Education ";
         textView.setText(text);
         url1="https://api.foursquare.com/v3/places/search?ll="+act.getLatitudeText()+"%2C"+act.getLongitudeText()+"&radius=100000&categories=12009&sort=DISTANCE&limit=20";
-        list = (ListView) view.findViewById(R.id.list_fragment1);
+        list = (GridView) view.findViewById(R.id.list_fragment1);
+
         BackTask backTask = new BackTask();
         backTask.execute();
         return view;
@@ -102,9 +102,9 @@ public class BlankFragmentActivity_1 extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            ArrayList<String> arr = DataExtracter.extractdata(s);
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(thisContext, android.R.layout.simple_list_item_1,arr);
-            list.setAdapter(arrayAdapter);
+            ArrayList<CustomJavaClass> arr = DataExtracter.extractData(s);
+            CustomAdapter customAdapter = new CustomAdapter(thisContext, R.layout.custom_layout,arr);
+            list.setAdapter(customAdapter);
         }
     }
 }
