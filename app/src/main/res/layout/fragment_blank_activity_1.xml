@@ -15,12 +15,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hello_blank_fragment" />
-        <ImageView
-            android:id="@+id/image_fragment1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/when"
-            android:contentDescription="TODO:img" />
+        <ListView
+            android:layout_marginTop="25dp"
+            android:id="@+id/list_fragment1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
     </LinearLayout>
 
 </FrameLayout>
