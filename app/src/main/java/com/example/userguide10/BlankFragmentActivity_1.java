@@ -1,5 +1,6 @@
 package com.example.userguide10;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -21,6 +22,7 @@ public class BlankFragmentActivity_1 extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
 
     private int mPage;
+    public Context thisContext;
 
     public static BlankFragmentActivity_1 newInstance(int page) {
         Bundle args = new Bundle();
@@ -34,14 +36,25 @@ public class BlankFragmentActivity_1 extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        assert container != null;
+        //thisContext=container.getContext();
+        //locationTracker locationTracker = new locationTracker(thisContext);
+
+        //locationTracker.getLastLocation();
+
+
         View view = inflater.inflate(R.layout.fragment_blank_activity_1, container, false);
         TextView textView = (TextView) view.findViewById(R.id.text_fragment1);
-        String text = "Fragment #" + mPage+" Shubh Gupta  123";
+        afterLoginActivity act = (afterLoginActivity) getActivity();
+        assert act != null;
+        String text = act.getLatitudeText();
         textView.setText(text);
         return view;
     }

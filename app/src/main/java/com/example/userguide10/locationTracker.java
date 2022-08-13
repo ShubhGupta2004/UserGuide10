@@ -29,8 +29,9 @@ public class locationTracker extends AppCompatActivity {
     FusedLocationProviderClient mFusedLocationClient;
     int PERMISSION_ID = 44;
 
+
     @SuppressLint("MissingPermission")
-    private void getLastLocation() {
+    public void getLastLocation() {
         // check if permissions are given
         if (checkPermissions()) {
 
@@ -117,8 +118,7 @@ public class locationTracker extends AppCompatActivity {
     }
     // If everything is alright then
     @Override
-    public void
-    onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (requestCode == PERMISSION_ID) {
