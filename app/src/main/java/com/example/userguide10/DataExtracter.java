@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import com.squareup.picasso.Picasso;
 
 public class DataExtracter {
     private DataExtracter(){
@@ -20,7 +21,12 @@ public class DataExtracter {
             for(int i=0;i<arr1.length();i++){
                 JSONObject obj2 = arr1.getJSONObject(i);
                 String s = obj2.getString("name").toString();
-                list.add(new CustomJavaClass(s," "," "," "," "," "," "));
+                JSONArray arr2 = obj2.getJSONArray("categories");
+                JSONObject obj3 = arr2.getJSONObject(0).getJSONObject("icon");
+                String img = obj3.getString("prefix")+"bg_120.png";
+
+
+                list.add(new CustomJavaClass(s," ",img," "," "," "," "));
             }
             Log.d("main",JsonResponse+" response");
         }catch (Exception e){

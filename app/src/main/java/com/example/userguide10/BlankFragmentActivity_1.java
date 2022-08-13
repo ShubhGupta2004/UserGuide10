@@ -67,7 +67,7 @@ public class BlankFragmentActivity_1 extends Fragment {
         assert act != null;
         String text = "Education ";
         textView.setText(text);
-        url1="https://api.foursquare.com/v3/places/search?ll="+act.getLatitudeText()+"%2C"+act.getLongitudeText()+"&radius=100000&categories=12009&sort=DISTANCE&limit=20";
+        url1="https://api.foursquare.com/v3/places/search?ll="+act.getLatitudeText()+"%2C"+act.getLongitudeText()+"&radius=100000&categories=12009&sort=DISTANCE&limit=19";
         list = (GridView) view.findViewById(R.id.list_fragment1);
 
         BackTask backTask = new BackTask();
