@@ -12,8 +12,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 public class fragmentAdapter extends FragmentPagerAdapter {
-    final int PAGE_COUNT = 4;
-    private static String tabTitles[] = new String[] { "Tab1", "Tab2", "Tab3","Tab 4" };
+    final int PAGE_COUNT = 7;
+    private static String tabTitles[] = new String[] { "Education", "Food", "Spiritual","Health","Landmark","Retail","Transport" };
     private static int imageResId[] = new int[] {R.drawable.when,R.drawable.how,R.drawable.when};
     private static Context context;
 
@@ -37,7 +37,13 @@ public class fragmentAdapter extends FragmentPagerAdapter {
             return BlankFragmentActivity_3.newInstance(position+1);
         }else if(position==3){
             return BlankFragmentActivity_4.newInstance(position+1);
-        }else {
+        }else if(position==4){
+            return BlankFragmentActivity_5.newInstance(position+1);
+        }else if(position==5){
+            return BlankFragmentActivity_6.newInstance(position+1);
+        }else if(position==6){
+            return BlankFragmentActivity_7.newInstance(position+1);
+        } else {
             return BlankFragment_1.newInstance(position + 1);
         }
     }
@@ -46,15 +52,5 @@ public class fragmentAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         // Generate title based on item position
         return tabTitles[position];
-    }
-
-    public static View getTabView(int position) {
-        // Given you have a custom layout in `res/layout/custom_tab.xml` with a TextView and ImageView
-        View v = LayoutInflater.from(context).inflate(R.layout.custom_tab, null);
-        TextView tv = (TextView) v.findViewById(R.id.textView);
-        tv.setText(tabTitles[position]);
-        ImageView img = (ImageView) v.findViewById(R.id.imgView);
-        img.setImageResource(imageResId[position]);
-        return v;
     }
 }

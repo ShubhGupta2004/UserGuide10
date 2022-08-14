@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BlankFragmentActivity_3">
+    tools:context=".BlankFragmentActivity_6">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -11,13 +11,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/text_fragment3"
+            android:id="@+id/text_fragment6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hello_blank_fragment" />
         <GridView
             android:layout_marginTop="25dp"
-            android:id="@+id/list_fragment3"
+            android:id="@+id/list_fragment6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:numColumns="2"/>

@@ -23,26 +23,23 @@ import okhttp3.Response;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BlankFrangmentActivity_2#newInstance} factory method to
+ * Use the {@link BlankFragmentActivity_5#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BlankFrangmentActivity_2 extends Fragment {
+public class BlankFragmentActivity_5 extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     public static final String ARG_PAGE = "ARG_PAGE";
     public static String url1 = "";
     public static String resp;
     public static GridView list;
-    public static Context thisContext;
-
 
     private int mPage;
+    public static Context thisContext;
 
-    public static BlankFrangmentActivity_2 newInstance(int page) {
+    public static BlankFragmentActivity_5 newInstance(int page) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
-        BlankFrangmentActivity_2 fragment = new BlankFrangmentActivity_2();
+        BlankFragmentActivity_5 fragment = new BlankFragmentActivity_5();
         fragment.setArguments(args);
         return fragment;
     }
@@ -59,16 +56,16 @@ public class BlankFrangmentActivity_2 extends Fragment {
         assert container != null;
         thisContext=container.getContext();
 
-        View view = inflater.inflate(R.layout.fragment_blank_frangment_activity_2, container, false);
-        TextView textView = (TextView) view.findViewById(R.id.text_fragment2);
+        View view = inflater.inflate(R.layout.fragment_blank_activity_5, container, false);
+        TextView textView = (TextView) view.findViewById(R.id.text_fragment5);
         afterLoginActivity act = (afterLoginActivity) getActivity();
         assert act != null;
-        String text = "Food and Restaurants ";
+        String text = "Landmark ";
         textView.setText(text);
-        url1="https://api.foursquare.com/v3/places/search?ll="+act.getLatitudeText()+"%2C"+act.getLongitudeText()+"&radius=100000&categories=13000&sort=DISTANCE&limit=39";
-        list = (GridView) view.findViewById(R.id.list_fragment2);
+        url1="https://api.foursquare.com/v3/places/search?ll="+act.getLatitudeText()+"%2C"+act.getLongitudeText()+"&radius=100000&categories=16000&sort=DISTANCE&limit=39";
+        list = (GridView) view.findViewById(R.id.list_fragment5);
 
-        BlankFrangmentActivity_2.BackTask backTask = new BlankFrangmentActivity_2.BackTask();
+        BlankFragmentActivity_5.BackTask backTask = new BlankFragmentActivity_5.BackTask();
         backTask.execute();
         return view;
     }

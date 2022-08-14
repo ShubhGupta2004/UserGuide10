@@ -1,13 +1,25 @@
 package com.example.userguide10;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Objects;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,12 +28,13 @@ import android.widget.TextView;
  */
 public class BlankFragmentActivity_3 extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     public static final String ARG_PAGE = "ARG_PAGE";
+    public static String url1 = "";
+    public static String resp;
+    public static GridView list;
 
     private int mPage;
+    public static Context thisContext;
 
     public static BlankFragmentActivity_3 newInstance(int page) {
         Bundle args = new Bundle();
@@ -40,10 +53,52 @@ public class BlankFragmentActivity_3 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        assert container != null;
+        thisContext=container.getContext();
+
         View view = inflater.inflate(R.layout.fragment_blank_activity_3, container, false);
         TextView textView = (TextView) view.findViewById(R.id.text_fragment3);
-        String text = "Fragment #" + mPage+" Shubh Gupta 123";
+        afterLoginActivity act = (afterLoginActivity) getActivity();
+        assert act != null;
+        String text = "Spiritual Places";
         textView.setText(text);
+        url1="https://api.foursquare.com/v3/places/search?ll="+act.getLatitudeText()+"%2C"+act.getLongitudeText()+"&radius=100000&categories=12098&sort=DISTANCE&limit=39";
+        list = (GridView) view.findViewById(R.id.list_fragment3);
+
+        BlankFragmentActivity_3.BackTask backTask = new BlankFragmentActivity_3.BackTask();
+        backTask.execute();
         return view;
+    }
+    public static class BackTask extends AsyncTask<String,Void,String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            OkHttpClient client = new OkHttpClient();
+
+            Request request = new Request.Builder()
+                    .url(url1)
+                    .get()
+                    .addHeader("Accept", "application/json")
+                    .addHeader("Authorization", "fsq3w6+LNbjowUkV13FSllJnBY+XU/fZiqWrmW8bPc2Cywg=")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                resp= Objects.requireNonNull(response.body()).string();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Log.d("main",resp);
+            return resp;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            ArrayList<CustomJavaClass> arr = DataExtracter.extractData(s);
+            CustomAdapter customAdapter = new CustomAdapter(thisContext, R.layout.custom_layout,arr);
+            list.setAdapter(customAdapter);
+        }
     }
 }
