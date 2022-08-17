@@ -1,6 +1,7 @@
 package com.example.userguide10;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -32,6 +34,7 @@ public class BlankFragmentActivity_7 extends Fragment {
     public static String url1 = "";
     public static String resp;
     public static GridView list;
+    public static CustomAdapter customAdapter;
 
     private int mPage;
     public static Context thisContext;
@@ -67,6 +70,24 @@ public class BlankFragmentActivity_7 extends Fragment {
 
         BlankFragmentActivity_7.BackTask backTask = new BlankFragmentActivity_7.BackTask();
         backTask.execute();
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                CustomJavaClass customJavaClass = (CustomJavaClass) customAdapter.getItem(i);
+                ArrayList<String> arrayList = new ArrayList<>();
+                arrayList.add(customJavaClass.getName());
+                arrayList.add(customJavaClass.getFsqId());
+                arrayList.add(customJavaClass.getImgLink());
+                arrayList.add(customJavaClass.getDistance());
+                arrayList.add(customJavaClass.getAddress());
+                arrayList.add(customJavaClass.getLatitude());
+                arrayList.add(customJavaClass.getLongitude());
+
+                Intent intent = new Intent(getActivity(),moreDetailActivity.class);
+                intent.putStringArrayListExtra("frag1",arrayList);
+                startActivity(intent);
+            }
+        });
         return view;
     }
     public static class BackTask extends AsyncTask<String,Void,String> {
@@ -97,7 +118,7 @@ public class BlankFragmentActivity_7 extends Fragment {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             ArrayList<CustomJavaClass> arr = DataExtracter.extractData(s);
-            CustomAdapter customAdapter = new CustomAdapter(thisContext, R.layout.custom_layout,arr);
+            customAdapter = new CustomAdapter(thisContext, R.layout.custom_layout,arr);
             list.setAdapter(customAdapter);
         }
     }

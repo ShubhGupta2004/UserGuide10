@@ -1,6 +1,6 @@
 package com.example.userguide10;
 
-public class CustomJavaClass {
+public class CustomJavaClass{
     String Name;
     String Address;
     String imgLink;
